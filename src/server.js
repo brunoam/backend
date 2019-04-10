@@ -9,8 +9,8 @@ app.use(cors());
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-io.on('connection', function(socket){
-    socket.on('connectRoom', function(box){
+io.on('connection', socket => {
+    socket.on('connectRoom', box => {
         socket.join(box);
     })
 });
@@ -19,10 +19,10 @@ mongoose.connect('mongodb+srv://omnistack:omnistack@cluster0-ovabn.mongodb.net/o
     useNewUrlParser: true,
 })
 
-app.use( function(req, res, next){
+app.use((req, res, next) => {
     req.io = io;
 
-    return next;
+    return next();
 });
 
 
