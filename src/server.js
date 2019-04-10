@@ -23,7 +23,7 @@ app.use( function(req, res, next){
     req.io = io;
 
     return next;
-})
+});
 
 
 app.use(express.json());
